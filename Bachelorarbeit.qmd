@@ -1,0 +1,788 @@
+---
+title: "Bachelorarbeit"
+author: "Simon Germer"
+format: html
+editor: visual
+---
+
+```{r}
+pacman::p_load(tidyverse, readxl, knitr, see, desplot, magrittr, emmeans, multcomp, multcompView)
+```
+
+# Frischmasse
+
+```{r}
+Frischmasse <- read_excel("/Users/simongermer/Documents/Ergebnisse\ Wachstumsparameter.xlsx")
+
+Frischmasse$Variante <- as.factor(Frischmasse$Variante)
+Frischmasse$Wdh <- as.factor(Frischmasse$Wdh)
+
+```
+
+## FM Zwischenernte
+
+```{r}
+anova_FMZ <- aov(FM ~ Variante, data = Frischmasse)
+summary(anova_FMZ)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_FMZ <- TukeyHSD(anova_FMZ)
+
+# Ergebnisse anzeigen
+print(posthoc_result_FMZ)
+
+# Erstelle den compact letter display
+cld_results_FMZ <- multcompLetters4(anova_FMZ, posthoc_result_FMZ)
+
+# Zeige die Ergebnisse an
+print(cld_results_FMZ)
+```
+
+## FM Endernte
+
+```{r}
+anova_FME <- aov(FME ~ Variante, data = Frischmasse)
+summary(anova_FME)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_FME <- TukeyHSD(anova_FME)
+
+# Ergebnisse anzeigen
+print(posthoc_result_FME)
+
+# Erstelle den compact letter display
+cld_results_FME <- multcompLetters4(anova_FME, posthoc_result_FME)
+
+# Zeige die Ergebnisse an
+print(cld_results_FME)
+```
+
+# Gesamttrieblänge
+
+```{r}
+Gesamttrieblange <- read_excel("/Users/simongermer/Documents/Ergebnisse\ Gesamttrieblange.xlsx")
+
+Gesamttrieblange$Variante <- as.factor(Gesamttrieblange$Variante)
+Gesamttrieblange$Wdh <- as.factor(Gesamttrieblange$Wdh)
+
+```
+
+## Gesamttrieblänge Zwischenernte
+
+```{r}
+anova_GTZ <- aov(GTZ ~ Variante, data = Gesamttrieblange)
+summary(anova_GTZ)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_GTZ <- TukeyHSD(anova_GTZ)
+
+# Ergebnisse anzeigen
+print(posthoc_result_GTZ)
+
+# Erstelle den compact letter display
+cld_results_GTZ <- multcompLetters4(anova_GTZ, posthoc_result_GTZ)
+
+# Zeige die Ergebnisse an
+print(cld_results_GTZ)
+```
+
+## Gesamttrieblänge Endernte
+
+```{r}
+anova_GTE <- aov(GTE ~ Variante, data = Gesamttrieblange)
+summary(anova_GTE)
+```
+
+```{r}
+
+
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_GTE <- TukeyHSD(anova_GTE)
+
+# Ergebnisse anzeigen
+print(posthoc_result_GTE)
+
+# Erstelle den compact letter display
+cld_results_GTE <- multcompLetters4(anova_GTE, posthoc_result_GTE)
+
+# Zeige die Ergebnisse an
+print(cld_results_GTE)
+```
+
+# Höhe und Durchmesser
+
+```{r}
+
+HoheBreite <- read_excel("/Users/simongermer/Documents/Ergebnisse\ HoheBreite.xlsx")
+
+HoheBreite$Variante <- as.factor(HoheBreite$Variante)
+HoheBreite$Wdh <- as.factor(HoheBreite$Wdh)
+```
+
+## Höhe Zwischenernte
+
+```{r}
+anova_HOZ <- aov(HOZ ~ Variante, data = HoheBreite)
+summary(anova_HOZ)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_HOZ <- TukeyHSD(anova_HOZ)
+
+# Ergebnisse anzeigen
+print(posthoc_result_HOZ)
+
+# Erstelle den compact letter display
+cld_results_HOZ <- multcompLetters4(anova_HOZ, posthoc_result_HOZ)
+
+# Zeige die Ergebnisse an
+print(cld_results_HOZ)
+```
+
+## Höhe Endernte
+
+```{r}
+anova_HOE <- aov(HOE ~ Variante, data = HoheBreite)
+summary(anova_HOE)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_HOE <- TukeyHSD(anova_HOE)
+
+# Ergebnisse anzeigen
+print(posthoc_result_HOE)
+
+# Erstelle den compact letter display
+cld_results_HOE <- multcompLetters4(anova_HOE, posthoc_result_HOE)
+
+# Zeige die Ergebnisse an
+print(cld_results_HOE)
+```
+
+## Durchmesser Zwischenernte
+
+```{r}
+anova_DUZ <- aov(DUZ ~ Variante, data = HoheBreite)
+summary(anova_DUZ)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_DUZ <- TukeyHSD(anova_DUZ)
+
+# Ergebnisse anzeigen
+print(posthoc_result_DUZ)
+
+# Erstelle den compact letter display
+cld_results_DUZ <- multcompLetters4(anova_DUZ, posthoc_result_DUZ)
+
+# Zeige die Ergebnisse an
+print(cld_results_DUZ)
+```
+
+## Durchmesser Endernte
+
+```{r}
+anova_DUE <- aov(DUE ~ Variante, data = HoheBreite)
+summary(anova_DUE)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_DUE <- TukeyHSD(anova_DUE)
+
+# Ergebnisse anzeigen
+print(posthoc_result_DUE)
+
+# Erstelle den compact letter display
+cld_results_DUE <- multcompLetters4(anova_DUE, posthoc_result_DUE)
+
+# Zeige die Ergebnisse an
+print(cld_results_DUE)
+```
+
+# Vergleich Gitter - Auffangsystem
+
+```{r}
+
+Vergleiche <- read_excel("/Users/simongermer/Documents/Ergebnisse\ Vergleiche\ Kopie.xlsx")
+
+Vergleiche$Variante <- as.factor(Vergleiche$Variante)
+Vergleiche$Wdh <- as.factor(Vergleiche$Wdh)
+```
+
+## Vergleich Frischmasse
+
+```{r}
+anova_FMEimer <- aov(FMEimer ~ Variante, data = Vergleiche)
+summary(anova_FMEimer)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_FMEimer <- TukeyHSD(anova_FMEimer)
+
+# Ergebnisse anzeigen
+print(posthoc_result_FMEimer)
+
+# Erstelle den compact letter display
+cld_results_FMEimer <- multcompLetters4(anova_FMEimer, posthoc_result_FMEimer)
+
+# Zeige die Ergebnisse an
+print(cld_results_FMEimer)
+```
+
+## Vergleich Gesamttrieblänge
+
+```{r}
+anova_GTEimer <- aov(GTEimer ~ Variante, data = Vergleiche)
+summary(anova_GTEimer)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_GTEimer <- TukeyHSD(anova_GTEimer)
+
+# Ergebnisse anzeigen
+print(posthoc_result_GTEimer)
+
+# Erstelle den compact letter display
+cld_results_GTEimer <- multcompLetters4(anova_GTEimer, posthoc_result_GTEimer)
+
+# Zeige die Ergebnisse an
+print(cld_results_GTEimer)
+```
+
+## Vergleich Höhe
+
+```{r}
+anova_HOEimer <- aov(HOEimer ~ Variante, data = Vergleiche)
+summary(anova_HOEimer)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_HOEimer <- TukeyHSD(anova_HOEimer)
+
+# Ergebnisse anzeigen
+print(posthoc_result_HOEimer)
+
+# Erstelle den compact letter display
+cld_results_HOEimer <- multcompLetters4(anova_HOEimer, posthoc_result_HOEimer)
+
+# Zeige die Ergebnisse an
+print(cld_results_HOEimer)
+```
+
+## Vergleich Durchmesser
+
+```{r}
+anova_DUEimer <- aov(DUEimer ~ Variante, data = Vergleiche)
+summary(anova_DUEimer)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_DUEimer <- TukeyHSD(anova_DUEimer)
+
+# Ergebnisse anzeigen
+print(posthoc_result_DUEimer)
+
+# Erstelle den compact letter display
+cld_results_DUEimer <- multcompLetters4(anova_DUEimer, posthoc_result_DUEimer)
+
+# Zeige die Ergebnisse an
+print(cld_results_DUEimer)
+```
+
+# N-Entzug Spross
+
+```{r}
+
+Entzug <- read_excel("/Users/simongermer/Documents/Ergebnisse\ N-Entzug.xlsx")
+
+Entzug$Variante <- as.factor(Entzug$Variante)
+Entzug$Wdh <- as.factor(Entzug$Wdh)
+
+```
+
+## N-Entzug Spross Zwischenernte
+
+```{r}
+anova_NEZ <- aov(NEZ ~ Variante, data = Entzug)
+summary(anova_NEZ)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_NEZ <- TukeyHSD(anova_NEZ)
+
+# Ergebnisse anzeigen
+print(posthoc_result_NEZ)
+
+# Erstelle den compact letter display
+cld_results_NEZ <- multcompLetters4(anova_NEZ, posthoc_result_NEZ)
+
+# Zeige die Ergebnisse an
+print(cld_results_NEZ)
+```
+
+## N-Entzug Spross Endernte
+
+```{r}
+anova_NEE <- aov(NEE ~ Variante, data = Entzug)
+summary(anova_NEE)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_NEE <- TukeyHSD(anova_NEE)
+
+# Ergebnisse anzeigen
+print(posthoc_result_NEE)
+
+# Erstelle den compact letter display
+cld_results_NEE <- multcompLetters4(anova_NEE, posthoc_result_NEE)
+
+# Zeige die Ergebnisse an
+print(cld_results_NEE)
+```
+
+# N-Auswaschung
+
+```{r}
+
+Auswaschung <- read_excel("/Users/simongermer/Documents/Ergebnisse\ N-Auswaschung\ Kopie.xlsx")
+
+Auswaschung$Variante <- as.factor(Auswaschung$Variante)
+Auswaschung$Wdh <- as.factor(Auswaschung$Wdh)
+```
+
+## N-Auswaschung bis zur Zwischenernte
+
+```{r}
+anova_AUZ <- aov(AUZ ~ Variante, data = Auswaschung)
+summary(anova_AUZ)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_AUZ <- TukeyHSD(anova_AUZ)
+
+# Ergebnisse anzeigen
+print(posthoc_result_AUZ)
+
+# Erstelle den compact letter display
+cld_results_AUZ <- multcompLetters4(anova_AUZ, posthoc_result_AUZ)
+
+# Zeige die Ergebnisse an
+print(cld_results_AUZ)
+```
+
+## N-Auswaschung Zw.-Endernte
+
+```{r}
+anova_AUZE <- aov(AUZE ~ Variante, data = Auswaschung)
+summary(anova_AUZE)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_AUZE <- TukeyHSD(anova_AUZE)
+
+# Ergebnisse anzeigen
+print(posthoc_result_AUZE)
+
+# Erstelle den compact letter display
+cld_results_AUZE <- multcompLetters4(anova_AUZE, posthoc_result_AUZE)
+
+# Zeige die Ergebnisse an
+print(cld_results_AUZE)
+```
+
+## N-Auswaschung Start-Endernte
+
+```{r}
+anova_AUE <- aov(AUE ~ Variante, data = Auswaschung)
+summary(anova_AUE)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_AUE <- TukeyHSD(anova_AUE)
+
+# Ergebnisse anzeigen
+print(posthoc_result_AUE)
+
+# Erstelle den compact letter display
+cld_results_AUE <- multcompLetters4(anova_AUE, posthoc_result_AUE)
+
+# Zeige die Ergebnisse an
+print(cld_results_AUE)
+```
+
+## N-Auswaschung 1. Termin
+
+```{r}
+anova_AUJU <- aov(AUJU ~ Variante, data = Auswaschung)
+summary(anova_AUJU)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_AUJU <- TukeyHSD(anova_AUJU)
+
+# Ergebnisse anzeigen
+print(posthoc_result_AUJU)
+
+# Erstelle den compact letter display
+cld_results_AUJU <- multcompLetters4(anova_AUJU, posthoc_result_AUJU)
+
+# Zeige die Ergebnisse an
+print(cld_results_AUJU)
+```
+
+## N-Auswaschung 2. Termin
+
+```{r}
+anova_AUAU <- aov(AUAU ~ Variante, data = Auswaschung)
+summary(anova_AUAU)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_AUAU <- TukeyHSD(anova_AUAU)
+
+# Ergebnisse anzeigen
+print(posthoc_result_AUAU)
+
+# Erstelle den compact letter display
+cld_results_AUAU <- multcompLetters4(anova_AUAU, posthoc_result_AUAU)
+
+# Zeige die Ergebnisse an
+print(cld_results_AUAU)
+```
+
+## Wassermenge
+
+```{r}
+anova_AUW <- aov(AUW ~ Variante, data = Auswaschung)
+summary(anova_AUW)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_AUW <- TukeyHSD(anova_AUW)
+
+# Ergebnisse anzeigen
+print(posthoc_result_AUW)
+
+# Erstelle den compact letter display
+cld_results_AUW <- multcompLetters4(anova_AUW, posthoc_result_AUW)
+
+# Zeige die Ergebnisse an
+print(cld_results_AUW)
+```
+
+# N-Immobilisierung
+
+```{r}
+
+Immobilisierung <- read_excel("/Users/simongermer/Documents/Ergebnisse\ Immobilisierung.xlsx")
+
+Immobilisierung$Variante <- as.factor(Immobilisierung$Variante)
+Immobilisierung$Wdh <- as.factor(Immobilisierung$Wdh)
+
+
+```
+
+## Zwischenernte: Varianten 1-1
+
+```{r}
+anova_IMZEE <- aov(IMZEE ~ Variante, data = Immobilisierung)
+summary(anova_IMZEE)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_IMZEE <- TukeyHSD(anova_IMZEE)
+
+# Ergebnisse anzeigen
+print(posthoc_result_IMZEE)
+
+# Erstelle den compact letter display
+cld_results_IMZEE <- multcompLetters4(anova_IMZEE, posthoc_result_IMZEE)
+
+# Zeige die Ergebnisse an
+print(cld_results_IMZEE)
+```
+
+## Zwischenernte: Variante 1-2
+
+```{r}
+anova_IMZEZ <- aov(IMZEZ ~ Variante, data = Immobilisierung)
+summary(anova_IMZEZ)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_IMZEZ <- TukeyHSD(anova_IMZEZ)
+
+# Ergebnisse anzeigen
+print(posthoc_result_IMZEZ)
+
+# Erstelle den compact letter display
+cld_results_IMZEZ <- multcompLetters4(anova_IMZEZ, posthoc_result_IMZEZ)
+
+# Zeige die Ergebnisse an
+print(cld_results_IMZEZ)
+```
+
+## Zwischenernte: Variante 1-3
+
+```{r}
+anova_IMZED <- aov(IMZED ~ Variante, data = Immobilisierung)
+summary(anova_IMZED)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_IMZED <- TukeyHSD(anova_IMZED)
+
+# Ergebnisse anzeigen
+print(posthoc_result_IMZED)
+
+# Erstelle den compact letter display
+cld_results_IMZED <- multcompLetters4(anova_IMZED, posthoc_result_IMZED)
+
+# Zeige die Ergebnisse an
+print(cld_results_IMZED)
+```
+
+## Zwischenernte: Variante 2-3
+
+```{r}
+anova_IMZZD <- aov(IMZZD ~ Variante, data = Immobilisierung)
+summary(anova_IMZZD)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_IMZZD <- TukeyHSD(anova_IMZZD)
+
+# Ergebnisse anzeigen
+print(posthoc_result_IMZZD)
+
+# Erstelle den compact letter display
+cld_results_IMZZD <- multcompLetters4(anova_IMZZD, posthoc_result_IMZZD)
+
+# Zeige die Ergebnisse an
+print(cld_results_IMZZD)
+```
+
+## Endernte: Variante 1-1
+
+```{r}
+anova_IMEEE <- aov(IMEEE ~ Variante, data = Immobilisierung)
+summary(anova_IMEEE)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_IMEEE <- TukeyHSD(anova_IMEEE)
+
+# Ergebnisse anzeigen
+print(posthoc_result_IMEEE)
+
+# Erstelle den compact letter display
+cld_results_IMEEE<- multcompLetters4(anova_IMEEE, posthoc_result_IMEEE)
+
+# Zeige die Ergebnisse an
+print(cld_results_IMEEE)
+```
+
+## Endernte: Variante 1-2
+
+```{r}
+anova_IMEEZ <- aov(IMEEZ ~ Variante, data = Immobilisierung)
+summary(anova_IMEEZ)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_IMEEZ <- TukeyHSD(anova_IMEEZ)
+
+# Ergebnisse anzeigen
+print(posthoc_result_IMEEZ)
+
+# Erstelle den compact letter display
+cld_results_IMEEZ<- multcompLetters4(anova_IMEEZ, posthoc_result_IMEEZ)
+
+# Zeige die Ergebnisse an
+print(cld_results_IMEEZ)
+```
+
+## Endernte: Variante 1-3
+
+```{r}
+anova_IMEED <- aov(IMEED ~ Variante, data = Immobilisierung)
+summary(anova_IMEED)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_IMEED <- TukeyHSD(anova_IMEED)
+
+# Ergebnisse anzeigen
+print(posthoc_result_IMEED)
+
+# Erstelle den compact letter display
+cld_results_IMEED<- multcompLetters4(anova_IMEED, posthoc_result_IMEED)
+
+# Zeige die Ergebnisse an
+print(cld_results_IMEED)
+```
+
+## Endernte:
+
+```{r}
+anova_IMEZD <- aov(IMEZD ~ Variante, data = Immobilisierung)
+summary(anova_IMEZD)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_IMEZD <- TukeyHSD(anova_IMEZD)
+
+# Ergebnisse anzeigen
+print(posthoc_result_IMEZD)
+
+# Erstelle den compact letter display
+cld_results_IMEZD<- multcompLetters4(anova_IMEZD, posthoc_result_IMEZD)
+
+# Zeige die Ergebnisse an
+print(cld_results_IMEZD)
+```
+
+# N-Immobilisierung Endernte (Einzelne Varianten)
+
+```{r}
+ImmobilisierungE <- read_excel("/Users/simongermer/Documents/Ergebnisse\ Immobilisierung\ Kopie.xlsx")
+
+ImmobilisierungE$Variante <- as.factor(ImmobilisierungE$Variante)
+ImmobilisierungE$Wdh <- as.factor(ImmobilisierungE$Wdh)
+
+```
+
+## Variante 1
+
+```{r}
+anova_IMEE <- aov(IMEE ~ Variante, data = ImmobilisierungE)
+summary(anova_IMEE)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_IMEE <- TukeyHSD(anova_IMEE)
+
+# Ergebnisse anzeigen
+print(posthoc_result_IMEE)
+
+# Erstelle den compact letter display
+cld_results_IMEE<- multcompLetters4(anova_IMEE, posthoc_result_IMEE)
+
+# Zeige die Ergebnisse an
+print(cld_results_IMEE)
+```
+
+## Variante 1 (unbepflanzt)
+
+```{r}
+anova_IMEEU <- aov(IMEEU ~ Variante, data = ImmobilisierungE)
+summary(anova_IMEEU)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_IMEEU <- TukeyHSD(anova_IMEEU)
+
+# Ergebnisse anzeigen
+print(posthoc_result_IMEEU)
+
+# Erstelle den compact letter display
+cld_results_IMEEU<- multcompLetters4(anova_IMEEU, posthoc_result_IMEEU)
+
+# Zeige die Ergebnisse an
+print(cld_results_IMEEU)
+```
+
+## Variante 2 (unbepflanzt)
+
+```{r}
+anova_IMEED <- aov(IMEED ~ Variante, data = ImmobilisierungE)
+summary(anova_IMEED)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_IMEED <- TukeyHSD(anova_IMEED)
+
+# Ergebnisse anzeigen
+print(posthoc_result_IMEED)
+
+# Erstelle den compact letter display
+cld_results_IMEED<- multcompLetters4(anova_IMEED, posthoc_result_IMEED)
+
+# Zeige die Ergebnisse an
+print(cld_results_IMEED)
+```
+
+## Variante 3
+
+```{r}
+anova_IMED <- aov(IMED ~ Variante, data = ImmobilisierungE)
+summary(anova_IMED)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_IMED <- TukeyHSD(anova_IMED)
+
+# Ergebnisse anzeigen
+print(posthoc_result_IMED)
+
+# Erstelle den compact letter display
+cld_results_IMED<- multcompLetters4(anova_IMED, posthoc_result_IMED)
+
+# Zeige die Ergebnisse an
+print(cld_results_IMED)
+```
+
+## Variante 3 (ZE)
+
+```{r}
+anova_IMZD <- aov(IMZD ~ Variante, data = ImmobilisierungE)
+summary(anova_IMZD)
+```
+
+```{r}
+# Tukey HSD Post-hoc Test durchführen
+posthoc_result_IMZD <- TukeyHSD(anova_IMZD)
+
+# Ergebnisse anzeigen
+print(posthoc_result_IMZD)
+
+# Erstelle den compact letter display
+cld_results_IMZD<- multcompLetters4(anova_IMZD, posthoc_result_IMZD)
+
+# Zeige die Ergebnisse an
+print(cld_results_IMZD)
+```
